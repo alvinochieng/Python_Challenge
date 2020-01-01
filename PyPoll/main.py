@@ -51,21 +51,32 @@ for k in range(list):
         candidate_percent = round(cand_votes[k] / totalvotes * 100, 2)
         percentage.append(candidate_percent)
 
+#Getting the winning candidate
 winning_vote = max(cand_votes)
 winning_index = cand_votes.index(winning_vote)
 win_candidate = candidate_list[winning_index]
-
-print(candidate_percent)
-#print(f'{str(candidate_list)}' + f'{str(cand_votes)}')
                 
 electiondata = (f"Total Votes Cast: {str(totalvotes)} \n")
 
+#print to terminal
+print("Total Votes:" + str(totalvotes))
+
+#zipping the list so the names of candidates(CL) correspond to their total votes(CV) and printing the result
+for (cl, cv) in zip(candidate_list, cand_votes):
+        print(cl,':' ,cv)
+
+#print to text file
 with open(votes_output, 'w', newline='') as electiontxtfile:
-        csvwriter = (electiontxtfile)
+        csvwriter = csv.writer(electiontxtfile)
         
         electiontxtfile.write("Election Results \n")
-        electiontxtfile.write("--------------------- \n")
+        electiontxtfile.write("--------------------- \n")        
         electiontxtfile.write(f"{str(electiondata)} \n")
         electiontxtfile.write("----------------------\n")
+        
+        for (cl, cv) in zip(candidate_list, cand_votes):
+                electiontxtfile.write(f"{str(cl)}" + ":" + (f"{int(cv)} \n"))
+                
+        electiontxtfile.write("--------------------\n")        
         electiontxtfile.write(f"Winner: {str(win_candidate)}")
     
