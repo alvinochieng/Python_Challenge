@@ -61,9 +61,9 @@ electiondata = (f"Total Votes Cast: {str(totalvotes)} \n")
 #print to terminal
 print("Total Votes:" + str(totalvotes))
 
-#zipping the list so the names of candidates(CL) correspond to their total votes(CV) and printing the result
-for (cl, cv) in zip(candidate_list, cand_votes):
-        print(cl,':' ,cv)
+#zipping the list so the names of candidates(CL) correspond to their total votes(CV) and percentage and printing the result
+for (cl, p, cv) in zip(candidate_list, percentage, cand_votes):
+        print(cl,':', p,"%", cv)
 
 #print to text file
 with open(votes_output, 'w', newline='') as electiontxtfile:
