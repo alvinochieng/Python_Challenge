@@ -63,7 +63,9 @@ print("Total Votes:" + str(totalvotes))
 
 #zipping the list so the names of candidates(CL) correspond to their total votes(CV) and percentage and printing the result
 for (cl, p, cv) in zip(candidate_list, percentage, cand_votes):
-        print(cl,':', p,"%", cv)
+        print(cl,':', p,"%", "("+str(cv)+")")
+        
+print("Winner:" + win_candidate)
 
 #print to text file
 with open(votes_output, 'w', newline='') as electiontxtfile:
@@ -74,8 +76,8 @@ with open(votes_output, 'w', newline='') as electiontxtfile:
         electiontxtfile.write(f"{str(electiondata)} \n")
         electiontxtfile.write("----------------------\n")
         
-        for (cl, cv) in zip(candidate_list, cand_votes):
-                electiontxtfile.write(f"{str(cl)}" + ":" + (f"{int(cv)} \n"))
+        for (cl, p, cv) in zip(candidate_list, percentage, cand_votes):
+                electiontxtfile.write(f"{str(cl)}" + ":" + f"{float(p)}" + " " + f"{str('('+str(cv)+')')}\n")
                 
         electiontxtfile.write("--------------------\n")        
         electiontxtfile.write(f"Winner: {str(win_candidate)}")
