@@ -77,7 +77,7 @@ with open(votes_output, 'w', newline='') as electiontxtfile:
         electiontxtfile.write("----------------------\n")
         
         for (cl, p, cv) in zip(candidate_list, percentage, cand_votes):
-                electiontxtfile.write(f"{str(cl)}" + ":" + f"{float(p)}" + " " + f"{str('('+str(cv)+')')}\n")
+                electiontxtfile.write(f"{str(cl)}" + ":" + f"{float(p)}" + "%" + " " + f"{str('('+str(cv)+')')}\n")
                 
         electiontxtfile.write("--------------------\n")        
         electiontxtfile.write(f"Winner: {str(win_candidate)}")
